@@ -12,9 +12,12 @@ app.use(bodyParser.json())
 
 app.use(function (req, res) {
     console.log('a request arrived')
+    console.log(req.query)
     console.log(req.body)
     res.setHeader('Content-Type', 'text/plain')
-    res.write('you posted:\n')
+    res.write('you posted query:\n')
+    res.write(JSON.stringify(req.query, null, 2))
+    res.write('you posted body:\n')
     res.end(JSON.stringify(req.body, null, 2))
 })
 
