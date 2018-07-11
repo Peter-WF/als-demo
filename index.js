@@ -12,10 +12,11 @@ app.use(bodyParser.json())
 
 app.use(function (req, res) {
     console.log('a request arrived')
-    console.log(req.body)
+    const data = req.body || req.query
+    console.log(data)
     res.setHeader('Content-Type', 'text/plain')
     res.write('you posted:\n')
-    res.end(JSON.stringify(req.body, null, 2))
+    res.end(JSON.stringify(data, null, 2))
 })
 
 app.listen(3000, function () {
